@@ -7,6 +7,7 @@ akCs4PFJetAnalyzer = inclusiveJetAnalyzer.clone(
     rParam = 0.4,
     fillGenJets = False,
     isMC = False,
+    doHiJetID = True,
     jetName = cms.untracked.string("akCs4PF"),
     hltTrgResults = cms.untracked.string('TriggerResults::'+'HISIGNAL'),
     )

@@ -195,6 +195,30 @@ private:
     float chargedSum[MAXJETS] = {0};
     int chargedN[MAXJETS] = {0};
 
+    float chargeKappa03Pt1[MAXJETS] = {0};
+    float chargeKappa05Pt1[MAXJETS] = {0};
+    float chargeKappa07Pt1[MAXJETS] = {0};
+    float chargeKappa10Pt1[MAXJETS] = {0};
+
+    float chargeKappa03Pt2[MAXJETS] = {0};
+    float chargeKappa05Pt2[MAXJETS] = {0};
+    float chargeKappa07Pt2[MAXJETS] = {0};
+    float chargeKappa10Pt2[MAXJETS] = {0};
+
+    float chargeKappa03Pt4[MAXJETS] = {0};
+    float chargeKappa05Pt4[MAXJETS] = {0};
+    float chargeKappa07Pt4[MAXJETS] = {0};
+    float chargeKappa10Pt4[MAXJETS] = {0};
+
+    float chargeKappa03Pt5[MAXJETS] = {0};
+    float chargeKappa05Pt5[MAXJETS] = {0};
+    float chargeKappa07Pt5[MAXJETS] = {0};
+    float chargeKappa10Pt5[MAXJETS] = {0};
+
+
+
+
+
     float photonMax[MAXJETS] = {0};
     float photonSum[MAXJETS] = {0};
     int photonN[MAXJETS] = {0};

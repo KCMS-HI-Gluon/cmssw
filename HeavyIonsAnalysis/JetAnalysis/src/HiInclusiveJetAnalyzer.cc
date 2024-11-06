@@ -196,6 +196,29 @@ void HiInclusiveJetAnalyzer::beginJob() {
     t->Branch("chargedHardSum", jets_.chargedHardSum, "chargedHardSum[nref]/F");
     t->Branch("chargedHardN", jets_.chargedHardN, "chargedHardN[nref]/I");
 
+
+    t->Branch("chargeKappa03Pt1", jets_.chargeKappa03Pt1, "chargeKappa03Pt1[nref]/F");
+    t->Branch("chargeKappa05Pt1", jets_.chargeKappa05Pt1, "chargeKappa05Pt1[nref]/F");
+    t->Branch("chargeKappa07Pt1", jets_.chargeKappa07Pt1, "chargeKappa07Pt1[nref]/F");
+    t->Branch("chargeKappa10Pt1", jets_.chargeKappa10Pt1, "chargeKappa10Pt1[nref]/F");
+
+    t->Branch("chargeKappa03Pt2", jets_.chargeKappa03Pt2, "chargeKappa03Pt2[nref]/F");
+    t->Branch("chargeKappa05Pt2", jets_.chargeKappa05Pt2, "chargeKappa05Pt2[nref]/F");
+    t->Branch("chargeKappa07Pt2", jets_.chargeKappa07Pt2, "chargeKappa07Pt2[nref]/F");
+    t->Branch("chargeKappa10Pt2", jets_.chargeKappa10Pt2, "chargeKappa10Pt2[nref]/F");
+
+    t->Branch("chargeKappa03Pt4", jets_.chargeKappa03Pt4, "chargeKappa03Pt4[nref]/F");
+    t->Branch("chargeKappa05Pt4", jets_.chargeKappa05Pt4, "chargeKappa05Pt4[nref]/F");
+    t->Branch("chargeKappa07Pt4", jets_.chargeKappa07Pt4, "chargeKappa07Pt4[nref]/F");
+    t->Branch("chargeKappa10Pt4", jets_.chargeKappa10Pt4, "chargeKappa10Pt4[nref]/F");
+
+    t->Branch("chargeKappa03Pt5", jets_.chargeKappa03Pt5, "chargeKappa03Pt5[nref]/F");
+    t->Branch("chargeKappa05Pt5", jets_.chargeKappa05Pt5, "chargeKappa05Pt5[nref]/F");
+    t->Branch("chargeKappa07Pt5", jets_.chargeKappa07Pt5, "chargeKappa07Pt5[nref]/F");
+    t->Branch("chargeKappa10Pt5", jets_.chargeKappa10Pt5, "chargeKappa10Pt5[nref]/F");
+
+
+
     t->Branch("photonMax", jets_.photonMax, "photonMax[nref]/F");
     t->Branch("photonSum", jets_.photonSum, "photonSum[nref]/F");
     t->Branch("photonN", jets_.photonN, "photonN[nref]/I");
@@ -568,6 +591,30 @@ void HiInclusiveJetAnalyzer::analyze(const Event& iEvent, const EventSetup& iSet
       jets_.chargedHardSum[jets_.nref] = 0;
       jets_.chargedHardN[jets_.nref] = 0;
 
+
+      jets_.chargeKappa03Pt1[jets_.nref] = 0;
+      jets_.chargeKappa05Pt1[jets_.nref] = 0;
+      jets_.chargeKappa07Pt1[jets_.nref] = 0;
+      jets_.chargeKappa10Pt1[jets_.nref] = 0;
+
+      jets_.chargeKappa03Pt2[jets_.nref] = 0;
+      jets_.chargeKappa05Pt2[jets_.nref] = 0;
+      jets_.chargeKappa07Pt2[jets_.nref] = 0;
+      jets_.chargeKappa10Pt2[jets_.nref] = 0;
+
+
+      jets_.chargeKappa03Pt4[jets_.nref] = 0;
+      jets_.chargeKappa05Pt4[jets_.nref] = 0;
+      jets_.chargeKappa07Pt4[jets_.nref] = 0;
+      jets_.chargeKappa10Pt4[jets_.nref] = 0;
+
+      jets_.chargeKappa03Pt5[jets_.nref] = 0;
+      jets_.chargeKappa05Pt5[jets_.nref] = 0;
+      jets_.chargeKappa07Pt5[jets_.nref] = 0;
+      jets_.chargeKappa10Pt5[jets_.nref] = 0;
+
+
+
       jets_.trackMax[jets_.nref] = 0;
       jets_.trackSum[jets_.nref] = 0;
       jets_.trackN[jets_.nref] = 0;
@@ -617,6 +664,36 @@ void HiInclusiveJetAnalyzer::analyze(const Event& iEvent, const EventSetup& iSet
         if (dr < rParam) {
           double ptcand = track.pt();
           int pfid = track.pdgId();
+
+	  if (ptcand > 1  && pt > 1 ) {
+		  jets_.chargeKappa03Pt1[jets_.nref] += track.charge()*pow( ptcand, 0.3) / pow( pt, 0.3 );
+		  jets_.chargeKappa05Pt1[jets_.nref] += track.charge()*pow( ptcand, 0.5) / pow( pt, 0.5 );
+		  jets_.chargeKappa07Pt1[jets_.nref] += track.charge()*pow( ptcand, 0.7) / pow( pt, 0.7 );
+		  jets_.chargeKappa10Pt1[jets_.nref] += track.charge()*pow( ptcand, 1.0) / pow( pt, 1.0 );
+	  }
+	
+	  if (ptcand > 2  && pt > 1 ) {
+		  jets_.chargeKappa03Pt2[jets_.nref] += track.charge()*pow( ptcand, 0.3) / pow( pt, 0.3 );
+		  jets_.chargeKappa05Pt2[jets_.nref] += track.charge()*pow( ptcand, 0.5) / pow( pt, 0.5 );
+		  jets_.chargeKappa07Pt2[jets_.nref] += track.charge()*pow( ptcand, 0.7) / pow( pt, 0.7 );
+		  jets_.chargeKappa10Pt2[jets_.nref] += track.charge()*pow( ptcand, 1.0) / pow( pt, 1.0 );
+	  }
+	  
+	  if (ptcand > 4  && pt > 1 ) {
+		  jets_.chargeKappa03Pt4[jets_.nref] += track.charge()*pow( ptcand, 0.3) / pow( pt, 0.3 );
+		  jets_.chargeKappa05Pt4[jets_.nref] += track.charge()*pow( ptcand, 0.5) / pow( pt, 0.5 );
+		  jets_.chargeKappa07Pt4[jets_.nref] += track.charge()*pow( ptcand, 0.7) / pow( pt, 0.7 );
+		  jets_.chargeKappa10Pt4[jets_.nref] += track.charge()*pow( ptcand, 1.0) / pow( pt, 1.0 );
+	  }
+	
+	  if (ptcand > 5  && pt > 1 ) {
+		  jets_.chargeKappa03Pt5[jets_.nref] += track.charge()*pow( ptcand, 0.3) / pow( pt, 0.3 );
+		  jets_.chargeKappa05Pt5[jets_.nref] += track.charge()*pow( ptcand, 0.5) / pow( pt, 0.5 );
+		  jets_.chargeKappa07Pt5[jets_.nref] += track.charge()*pow( ptcand, 0.7) / pow( pt, 0.7 );
+		  jets_.chargeKappa10Pt5[jets_.nref] += track.charge()*pow( ptcand, 1.0) / pow( pt, 1.0 );
+	  }
+	
+
 
           switch (pfid) {
             case 1:
