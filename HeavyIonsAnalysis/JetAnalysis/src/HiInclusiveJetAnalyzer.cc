@@ -528,6 +528,39 @@ void HiInclusiveJetAnalyzer::analyze(const Event& iEvent, const EventSetup& iSet
     if (std::abs(jet.eta()) > jetAbsEtaMax_)
       continue;
 
+
+    if (doJetConstituents_) {
+        // Retrieve jet constituents
+        std::vector<const reco::Candidate*> constituents = jet.getJetConstituentsQuick();
+        
+        // Temporary vector to store the constituent IDs for this jet
+        std::vector<int> constituentsId;
+        std::vector<float> constituentsE;
+        std::vector<float> constituentsPt;
+        std::vector<float> constituentsEta;
+        std::vector<float> constituentsPhi;
+        std::vector<float> constituentsM;
+        for (const auto* constituent : constituents) {
+            if (constituent) {
+                constituentsId.push_back(constituent->pdgId());  // Example: Collecting PDG IDs
+		constituentsE.push_back(constituent->energy());
+		constituentsPt.push_back(constituent->pt());
+		constituentsEta.push_back(constituent->eta());
+		constituentsPhi.push_back(constituent->phi());
+		constituentsM.push_back(constituent->mass());
+            }
+        }
+
+        // Add to the jtConstituentsId vector
+        jets_.jtConstituentsId.push_back(constituentsId);
+        jets_.jtConstituentsE.push_back(constituentsE);
+        jets_.jtConstituentsPt.push_back(constituentsPt);
+        jets_.jtConstituentsEta.push_back(constituentsEta);
+        jets_.jtConstituentsPhi.push_back(constituentsPhi);
+        jets_.jtConstituentsM.push_back(constituentsM);
+    }
+
+
     if (doCandidateBtagging_) {
       jets_.discr_deepCSV[jets_.nref] = jet.bDiscriminator(deepCSVJetTags_);
       jets_.discr_pfJP[jets_.nref] = jet.bDiscriminator(pfJPJetTags_);

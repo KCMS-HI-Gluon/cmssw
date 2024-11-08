@@ -9,6 +9,7 @@ akCs4PFJetAnalyzer = inclusiveJetAnalyzer.clone(
     fillGenJets = True,
     isMC = True,
     doHiJetID = True,
+    doJetConstituents = True,
     genParticles = cms.untracked.InputTag("prunedGenParticles"),
     eventInfoTag = cms.InputTag("generator"),
     jetName = cms.untracked.string("akCs4PF"),
